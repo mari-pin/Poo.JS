@@ -1,0 +1,19 @@
+html{font-family: 'Lora', serif;
+font-family: 'Poppins', sans-serif;}
+
+h1{font-family: 'Lora', serif;
+}
+h6{
+    font-family: 'Poppins', sans-serif}
+
+.btn{
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    background: #a2b5b6;
+    box-shadow: hsl(0, 0%, 0%);
+}
+.card{
+   box-shadow:rgb(14, 13, 13);
+   background: #f5e5e5f1;
+}
