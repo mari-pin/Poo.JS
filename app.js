@@ -5,6 +5,7 @@ const cardsEstudiantes = document.querySelector(`#cardsEstudiantes`);
 const cardsProfesores = document.querySelector(`#cardsProfesores`);
 const templateEstudiante = document.querySelector(`#templateEstudiante`).content;
 const templateProfesor = document.querySelector(`#templateProfesor`).content;
+const alert = document.querySelector('.alert');
 
 
 const estudiantes = [];
@@ -44,6 +45,8 @@ class Persona {
     constructor(nombre,edad){
         this.nombre = nombre;
         this.edad = edad;
+        this.uid = Date.now();
+        
     }
     static pintarPersonaUI(persona, tipo){
         if (tipo === "Estudiante"){
@@ -130,8 +133,20 @@ class Profesor extends Persona {
 formulario.addEventListener("submit", (e) =>{
     e.preventDefault();
    // console.log('hola');
+
+    //reinicia el programa y lanza la alerta
+    alert.classList.add("d-none");
+
     const datos = new FormData(formulario);
     const [nombre, edad, opcion] = [...datos.values()];
+    // comprobamos k se rellenan los espacios con datos y no con espacios vacios
+    if (!nombre.trim() || !edad.trim() || !opcion.trim()) {
+        console.log("algun dato en blanco");
+        //elimina el alert si rellenamos bien
+        alert.classList.remove("d-none");
+        return;
+    }
+
     //console.log(opcion);
     if (opcion === "Estudiante") {
         const estudiante = new Estudiante (nombre, edad);
