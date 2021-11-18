@@ -14,12 +14,12 @@ const profesores = [];
 //detccion del evento click
 document.addEventListener("click", (e)=>{
     //console.log(e.target.dataset.nombre);
-    if(e.target.dataset.nombre){
+    if(e.target.dataset.uid){
         //console.log(e.target.matches(".btn-success"))
         if(e.target.matches(".btn-success")){
             estudiantes.map((item) =>{
-                console.log(e.target.matches(".btn-success"))
-                if(item.nombre === e.target.dataset.nombre){
+               // console.log(e.target.matches(".btn-success"))
+                if(item.uid === e.target.dataset.uid){
                     item.setEstado = true;
                 }
                 console.log(item);
@@ -28,7 +28,7 @@ document.addEventListener("click", (e)=>{
         }
         if(e.target.matches(".btn-danger")){
             estudiantes.map((item) =>{
-                if(item.nombre === e.target.dataset.nombre){
+                if(item.uid === e.target.dataset.uid){
                     item.setEstado = false;
                 }
                 console.log(item);
@@ -45,8 +45,8 @@ class Persona {
     constructor(nombre,edad){
         this.nombre = nombre;
         this.edad = edad;
-        this.uid = Date.now();
-        
+        this.uid = `${Date.now()}`;// utilizamos asi porque nos devuelve un num y queremos de vuelta un string
+
     }
     static pintarPersonaUI(persona, tipo){
         if (tipo === "Estudiante"){
@@ -106,9 +106,9 @@ class Estudiante extends Persona{
         //btn estado del estudiante
         clone.querySelector('.badge').textContent = this.#estado ? "Aprobado" : "Suspendido";
 
-        //evento click boton
-        clone.querySelector(".btn-success").dataset.nombre = this.nombre;
-        clone.querySelector(".btn-danger").dataset.nombre = this.nombre;
+        //evento click boton con el uid correspondiente
+        clone.querySelector(".btn-success").dataset.uid = this.uid ;
+        clone.querySelector(".btn-danger").dataset.uid = this.uid ;
 
         return clone;
     }
