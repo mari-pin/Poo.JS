@@ -4,10 +4,23 @@ font-family: 'Poppins', sans-serif;}
 h1{font-family: 'Lora', serif;
 }
 h6{
-    font-family: 'Poppins', sans-serif}
-
+    font-family: 'Poppins', sans-serif;
+   
+}
+h5{
+    align-items: flex-end;
+}
+span{
+    font-family: 'Poppins', sans-serif
+}
+.badge{
+    color: rgba(29, 27, 27, 0.761);
+    
+}
 .btn{
     font-family: 'Poppins', sans-serif;
+    border-color: hsl(174, 60%, 22%);
+   
 }
 .container{
     background: #a2b5b6;
